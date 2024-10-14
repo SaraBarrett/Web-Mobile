@@ -24,6 +24,7 @@
     <ul>
         <li><a href="{{ route('welcome') }}">Welcome</a></li>
         <li><a href="{{ route('users.all') }}">Todos os Users</a></li>
+        <li><a href="{{route('users.add')}}">Adicionar Utilizador</a></li>
     </ul>
 
 </body>
