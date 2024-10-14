@@ -8,5 +8,6 @@
 </head>
 <body>
 <h1>Estás perdido? volta <a href="{{route('homepage')}}">aqui</a></h1>
+
 </body>
 </html>

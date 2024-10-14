@@ -1,18 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-@php
-    $myvar = 'olá mundo';
-    $myname = 'Sara';
-@endphp
+@extends('layouts.femaster')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('content')
+    @php
+        $myvar = 'olá mundo';
+        $myname = 'Sara';
+    @endphp
 
-<body>
+    <img src="{{ asset('images/photo-1623172959921-630212f71058.avif') }}" alt="">
     <h5>Olá sou a nossa casa!</h5>
     <p>{{ $myvar }}</p>
 
@@ -24,9 +18,6 @@
     <ul>
         <li><a href="{{ route('welcome') }}">Welcome</a></li>
         <li><a href="{{ route('users.all') }}">Todos os Users</a></li>
-        <li><a href="{{route('users.add')}}">Adicionar Utilizador</a></li>
+        <li><a href="{{ route('users.add') }}">Adicionar Utilizador</a></li>
     </ul>
-
-</body>
-
-</html>
+@endsection
