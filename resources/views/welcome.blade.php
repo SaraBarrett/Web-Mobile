@@ -909,7 +909,7 @@
             src="https://laravel.com/assets/img/welcome/background.svg" alt="Laravel background" />
         <div
             class="relative min-h-screen flex flex-col items-center justify-center selection:bg-[#FF2D20] selection:text-white">
-            <a href="{{ route('home') }}" target="_blank">Vai para aqui</a>
+            <a href="{{ route('homepage') }}" target="_blank">Vai para aqui</a>
             <div class="relative w-full max-w-2xl px-6 lg:max-w-7xl">
                 <header class="grid grid-cols-2 items-center gap-2 py-10 lg:grid-cols-3">
                     <div class="flex lg:justify-center lg:col-start-2">
