@@ -1,14 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('welcome');
+Route::get('/', [IndexController::class, 'welcome'])->name('welcome');
 
-Route::get('/home', function () {
-    return view('utils.home');
-})->name('homepage');
+Route::get('/home', [IndexController::class, 'home'])->name('homepage');
 
 Route::get('/users', function () {
     return view('users.all_users');
