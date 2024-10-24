@@ -9,7 +9,10 @@ class UserController extends Controller
     public function returnViewAllUsers(){
         $cesaeInfo = $this->getCesaeInfo();
 
-        return view('users.all_users', compact('cesaeInfo'));
+        $users = $this->getAllUsersFromArray();
+
+
+        return view('users.all_users', compact('cesaeInfo', 'users'));
     }
 
     public function returnViewAddUser(){
@@ -24,5 +27,15 @@ class UserController extends Controller
             ];
 
        return $cesaeInfo;
+    }
+
+    private function getAllUsersFromArray(){
+        $users = [
+            ['id' =>1, 'name' =>'Sara', 'email'=>'Sara@gmail.com'],
+            ['id' =>2, 'name' =>'Dra Anabela', 'email'=>'Anabela@gmail.com'],
+            ['id' =>3, 'name' =>'Bruno', 'email'=>'Bruno@gmail.com'],
+        ];
+
+        return $users;
     }
 }
