@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Response;
 
 class UserController extends Controller
 {
@@ -17,6 +19,18 @@ class UserController extends Controller
 
     public function returnViewAddUser(){
         return view('users.add_user');
+    }
+
+    public function insertUser(){
+        DB::table('users')
+        ->insert([
+            'name' => 'Sara',
+            'email' => 'sarae1@gmail.com',
+            'password' => 'sara14567'
+
+        ]);
+
+        return Response::json('sucesso');
     }
 
     private function getCesaeInfo(){

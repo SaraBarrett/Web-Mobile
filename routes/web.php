@@ -12,6 +12,8 @@ Route::get('/users', [UserController::class, 'returnViewAllUsers'])->name('users
 
 Route::get('/add_user', [UserController::class, 'returnViewAddUser'])->name('users.add');
 
+Route::get('/insert_user', [UserController::class, 'insertUser'])->name('users.insert');
+
 Route::get('/hello_world/{name}', function($name){
     return '<h1>Hello '.$name.'</h1>';
 });
