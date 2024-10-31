@@ -11,8 +11,9 @@ class UserController extends Controller
     public function returnViewAllUsers(){
         $cesaeInfo = $this->getCesaeInfo();
 
-        $users = $this->getAllUsersFromArray();
+        $users = $this->getAllUsersFromDB();
 
+        //dd($users);
 
         return view('users.all_users', compact('cesaeInfo', 'users'));
     }
@@ -81,6 +82,13 @@ class UserController extends Controller
             ['id' =>2, 'name' =>'Dra Anabela', 'email'=>'Anabela@gmail.com'],
             ['id' =>3, 'name' =>'Bruno', 'email'=>'Bruno@gmail.com'],
         ];
+
+        return $users;
+    }
+
+    private function getAllUsersFromDB(){
+        $users = Db::table('users')
+                    ->get();
 
         return $users;
     }
