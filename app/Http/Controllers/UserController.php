@@ -22,13 +22,45 @@ class UserController extends Controller
     }
 
     public function insertUser(){
-        DB::table('users')
-        ->insert([
-            'name' => 'Sara',
-            'email' => 'sarae1@gmail.com',
-            'password' => 'sara14567'
 
-        ]);
+        //insert na BD
+        // DB::table('users')
+        // ->insert([
+        //     'name' => 'catarina',
+        //     'email' => 'catarina@gmail.com',
+        //     'password' => 'sara14567'
+
+        // ]);
+
+
+        //update na BD
+        // DB::table('users')
+        // ->where('id', 1)
+        // ->update([
+        //     'name' => 'Liliana',
+        //     'nif' => '123456',
+        // ]);
+
+
+        //update ou inserir
+        // Db::table('users')
+        // ->updateOrInsert(
+        //     [
+        //         'email' => 'Pedro@gmail.com',
+        //         'password' => 'Pedro123456',
+        //     ],
+        //     [
+        //         'name' => 'Pedro',
+        //         'updated_at' => now(),
+        //         'nif' => '123456'
+        //     ]
+        // );
+
+
+        db::table('users')
+        ->where('id', 5)
+        ->delete();
+
 
         return Response::json('sucesso');
     }
