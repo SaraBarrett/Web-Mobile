@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -67,6 +68,17 @@ class UserController extends Controller
 
     public function viewUser($id){
 
+        $user = User::where('id', $id)->first();
+        return view('users.show_user', compact('user'));
+    }
+
+    public function deleteUser($id){
+
+        db::table('tasks')->where('user_id', $id)->delete();
+
+        User::where('id', $id)->delete();
+
+        return back();
     }
 
     private function getCesaeInfo(){
