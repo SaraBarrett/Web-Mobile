@@ -17,10 +17,12 @@ class TaskController extends Controller
     }
 
     protected function getAllTasks() {
+        
         $tasks = DB::table('tasks')
         ->join('users', 'users.id', '=', 'tasks.user_id')
         ->select('tasks.*', 'users.name as username')
         ->get();
+
         return  $tasks;
     }
 

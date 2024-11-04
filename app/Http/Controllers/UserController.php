@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Response;
@@ -12,8 +13,6 @@ class UserController extends Controller
         $cesaeInfo = $this->getCesaeInfo();
 
         $users = $this->getAllUsersFromDB();
-
-        //dd($users);
 
         return view('users.all_users', compact('cesaeInfo', 'users'));
     }
@@ -66,6 +65,10 @@ class UserController extends Controller
         return Response::json('sucesso');
     }
 
+    public function viewUser($id){
+
+    }
+
     private function getCesaeInfo(){
         $cesaeInfo = [
             'name' => 'Cesae',
@@ -87,8 +90,13 @@ class UserController extends Controller
     }
 
     private function getAllUsersFromDB(){
-        $users = Db::table('users')
-                    ->get();
+        // $users = Db::table('users')
+        //             ->whereNull('updated_at')
+        //             ->get();
+
+        //usar o model
+
+        $users= User::all();
 
         return $users;
     }

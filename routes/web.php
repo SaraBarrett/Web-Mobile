@@ -12,6 +12,9 @@ Route::get('/users', [UserController::class, 'returnViewAllUsers'])->name('users
 Route::get('/add_user', [UserController::class, 'returnViewAddUser'])->name('users.add');
 Route::get('/insert_user', [UserController::class, 'insertUser'])->name('users.insert');
 
+//leva o parametro do id para carregar o objecto com todos os detalhes do User
+Route::get('/users_show/{id}', [UserController::class, 'viewUser'])->name('users.show');
+
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.all');
 
 Route::get('/hello_world/{name}', function($name){
