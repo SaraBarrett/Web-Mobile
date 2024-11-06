@@ -1,6 +1,12 @@
 @extends('layouts.femaster')
 
 @section('content')
+@if (session('message'))
+<div class="alert alert-success">
+    {{session('message')}}
+</div>
+
+@endif
     <h6>Info do Cesae</h6>
     <ul>
         <li>{{ $cesaeInfo['name'] }}</li>
