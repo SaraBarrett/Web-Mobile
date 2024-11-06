@@ -81,6 +81,16 @@ class UserController extends Controller
         return back();
     }
 
+    public function createUser(Request $request){
+        $request->validate([
+            'name' => 'string|required|max:20',
+            'email' => 'email|required|unique:users',
+            'password' => 'min:6|required',
+        ]);
+
+
+    }
+
     private function getCesaeInfo(){
         $cesaeInfo = [
             'name' => 'Cesae',
