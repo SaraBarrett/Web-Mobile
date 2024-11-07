@@ -1,7 +1,17 @@
 @extends('layouts.femaster')
 
 @section('content')
+
+    @if(session('successM'))
+        <div class="alert alert-success">
+            {{session('successM')}}
+        </div>
+    @endif
+    
     <h1>Olá, aqui tens todas as Tarefas</h1>
+    <div class="text-end">
+        <button class="btn btn-secondary mb-3">Adicionar Tarefa</button>
+    </div>
 
     <table class="table">
         <thead>
