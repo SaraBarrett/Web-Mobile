@@ -36,8 +36,27 @@ class TaskController extends Controller
     }
 
     public function createTask(Request $request) {
-
+        $action = '';
+    if($request->id){
+        $action = 'actualizado';
         $request->validate([
+            'name' => 'required|string|max:50',
+            'user_id' => 'required'
+        ]);
+
+        DB::table('tasks')
+        ->where('id', $request->id)
+        ->update([
+            'user_id' => $request->user_id,
+            'name' => $request->name,
+            'status' => $request->status,
+            'description' => $request->description,
+            'due_at' => $request->due_at,
+        ]);
+
+    }else{
+        $action = 'inserido';
+           $request->validate([
             'name' => 'required|string|max:50',
             'description' =>'string|max:255',
             'user_id' => 'required'
@@ -47,11 +66,13 @@ class TaskController extends Controller
         ->insert([
             'user_id' => $request->user_id,
             'name' => $request->name,
-            'description' => $request->description,
-            'due_at' => $request->due_at,
+            'description' => $request->description
         ]);
 
-        return redirect()->route('tasks.all')->with('successM', 'Tarefa adicionada com sucesso!');
+    }
+
+
+        return redirect()->route('tasks.all')->with('successM', 'Tarefa '.$action.' com sucesso!');
 
     }
 

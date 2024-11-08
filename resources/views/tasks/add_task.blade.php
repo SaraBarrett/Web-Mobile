@@ -22,6 +22,7 @@
             @enderror
         </div>
         @if (isset($task))
+            <input type="hidden" name="id" value="{{ $task->id }}">
             <div class="mb-3">
                 <label for="exampleInputEmail1" class="form-label">Prazo</label>
                 <input value="{{ $task->due_at }}" name="due_at" type="date" class="form-control"
@@ -32,8 +33,8 @@
                 <label class="form-check-label" for="flexCheckDefault">
                     Estado
                 </label>
-                <input class="form-check-input" {{ $task->status == 1 ? 'checked' : '' }} type="checkbox" value=""
-                    id="flexCheckDefault">
+                <input name="status" value="1" class="form-check-input" {{ $task->status == 1 ? 'checked' : '' }}
+                    type="checkbox" value="" id="flexCheckDefault">
             </div>
         @endif
         <div class="mb-3">
@@ -42,7 +43,8 @@
             <select name="user_id" id="">
                 <option value=""> Seleccione o User</option>
                 @foreach ($users as $user)
-                    <option value="{{ $user->id }}">{{ $user->name }}</option>
+                    <option @if (isset($task) && $user->id == $task->user_id) selected @endif value="{{ $user->id }}">
+                        {{ $user->name }}</option>
                 @endforeach
             </select>
             @error('user_id')
