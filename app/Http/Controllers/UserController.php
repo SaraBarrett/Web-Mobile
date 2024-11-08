@@ -14,7 +14,8 @@ class UserController extends Controller
     public function returnViewAllUsers(){
         $cesaeInfo = $this->getCesaeInfo();
 
-        $users = $this->getAllUsersFromDB();
+        $search = request()->query('search') ? request()->query('search') : null;
+        $users = $this->getAllUsersFromDB($search);
 
         return view('users.all_users', compact('cesaeInfo', 'users'));
     }
@@ -137,14 +138,20 @@ class UserController extends Controller
         return $users;
     }
 
-    private function getAllUsersFromDB(){
+    private function getAllUsersFromDB($search){
         // $users = Db::table('users')
         //             ->whereNull('updated_at')
         //             ->get();
 
         //usar o model
 
-        $users= User::all();
+        $users= Db::table('users');
+        if($search){
+            $users = $users
+            ->where('name', 'LIKE', "%{$search}%")
+            ->orWhere('email', $search);
+        }
+        $users = $users->get();
 
         return $users;
     }
