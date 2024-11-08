@@ -37,7 +37,7 @@ class TaskController extends Controller
 
     public function createTask(Request $request) {
         $action = '';
-    if($request->id){
+        if($request->id){
         $action = 'actualizado';
         $request->validate([
             'name' => 'required|string|max:50',
