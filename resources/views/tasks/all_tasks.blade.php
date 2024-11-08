@@ -1,13 +1,12 @@
 @extends('layouts.femaster')
 
 @section('content')
-
-    @if(session('successM'))
+    @if (session('successM'))
         <div class="alert alert-success">
-            {{session('successM')}}
+            {{ session('successM') }}
         </div>
     @endif
-    
+
     <h1>Olá, aqui tens todas as Tarefas</h1>
     <div class="text-end">
         <button class="btn btn-secondary mb-3">Adicionar Tarefa</button>
@@ -21,6 +20,7 @@
                 <th scope="col">Estado</th>
                 <th scope="col">Data de Conclusão</th>
                 <th scope="col">User</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -31,6 +31,7 @@
                     <td>{{ $task->status }}</td>
                     <td>{{ $task->due_at }}</td>
                     <td>{{ $task->username }}</td>
+                    <td><a href="{{route('tasks.show', $task->id )}}" class="btn btn-info">Ver /editar</a></td>
                 </tr>
             @endforeach
         </tbody>

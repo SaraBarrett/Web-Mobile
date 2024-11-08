@@ -22,9 +22,11 @@ Route::get('/users_delete/{id}', [UserController::class, 'deleteUser'])->name('u
 
 //Tasks
 Route::get('/tasks', [TaskController::class, 'allTasks'])->name('tasks.all');
-
 Route::get('/add_task', [TaskController::class, 'returnViewAddTask'])->name('tasks.add');
 Route::post('/create_task', [TaskController::class, 'createTask'])->name('tasks.create');
+
+//rota para ver/editar tasks
+Route::get('/show_task/{id}', [TaskController::class, 'returnViewShowTask'])->name('tasks.show');
 
 Route::get('/hello_world/{name}', function($name){
     return '<h1>Hello '.$name.'</h1>';

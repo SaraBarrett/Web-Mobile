@@ -19,8 +19,20 @@ class TaskController extends Controller
 
     public function returnViewAddTask(){
         $users = DB::table('users')->get();
-        
+
         return view('tasks.add_task', compact('users'));
+    }
+
+    public function returnViewShowTask($id){
+
+        $task = DB::table('tasks')
+        ->where('id', $id)
+        ->first();
+
+        $users = User::all();
+
+        return view('tasks.add_task', compact('task', 'users'));
+
     }
 
     public function createTask(Request $request) {
