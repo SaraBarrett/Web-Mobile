@@ -2,7 +2,7 @@
 
 @section('content')
     <h4>Cucu sou os dados de um user {{ $user->name }}</h4>
-    <form method="POST" action="{{ route('users.create') }}">
+    <form method="POST" action="{{ route('users.create') }}" enctype="multipart/form-data">
         @csrf
         <input type="hidden" name="id" value="{{ $user->id }}">
         <div class="mb-3">
@@ -31,6 +31,10 @@
             <label class="form-label">Morada</label>
             <input value="{{ $user->address }}" name="address" type="text" class="form-control" id="exampleInputEmail1"
                 aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Photo</label>
+            <input type="file" accept="image/*" name="photo" id="">
         </div>
 
         <button type="submit" class="btn btn-primary">Actualizar</button>

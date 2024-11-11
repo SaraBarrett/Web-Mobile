@@ -14,13 +14,14 @@
     </ul>
     <h3>Sou uma blade para todos os users </h3>
     <form method="GET">
-        <input value="{{request()->query('search')}}"  type="text" name="search" id="">
+        <input value="{{ request()->query('search') }}" type="text" name="search" id="">
         <button class="btn btn-secondary">Procurar</button>
 
     </form>
     <table class="table">
         <thead>
             <tr>
+                <th>Photo</th>
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Email</th>
@@ -32,6 +33,8 @@
         <tbody>
             @foreach ($users as $user)
                 <tr>
+                    <td><img style="width: 30px; height:30px" src="{{  $user->photo? asset('storage/' . $user->photo) : asset('images/nophoto.jpg') }}" alt="">
+                    </td>
                     <th scope="row">{{ $user->id }}</th>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>

@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Response;
 
 class UserController extends Controller
@@ -90,13 +91,22 @@ class UserController extends Controller
 
             $request->validate([
                 'name' => 'string|required|max:20',
+                'photo' => 'image'
             ]);
+
+            $photo = null;
+
+            if($request->hasFile('photo')){
+               $photo = Storage::putFile('uploadedPhotos', $request->photo);
+            }
+
 
             User::where('id', $request->id)
             ->update([
                 'name' => $request->name,
                 'nif' => $request->nif,
                 'address' => $request->address,
+                'photo' =>$photo
             ]);
 
         }else{
