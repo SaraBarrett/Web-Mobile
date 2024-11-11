@@ -42,12 +42,14 @@
                                     Password is required
                                 </div>
                             </div>
+                            <input type="hidden" name="token" value="{{ request()->route('token') }}" id="">
+                            
                             <div class="d-flex align-items-center">
                                 <button type="submit" class="btn btn-primary ms-auto" fdprocessedid="i5syyn">
                                     Actualizar Pass
                                 </button>
                             </div>
-                            <input type="hidden" name="token" value="{{ request()->route('token') }}" id="">
+
                         </form>
                     </div>
                 </div>
