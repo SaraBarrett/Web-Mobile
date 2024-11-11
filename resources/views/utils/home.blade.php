@@ -27,8 +27,13 @@
     <p>Horas:{{ $info['hours'] }}h </p>
     <ul>
         <li><a href="{{ route('welcome') }}">Welcome</a></li>
+        @auth
         <li><a href="{{ route('users.all') }}">Todos os Users</a></li>
+
+        @if(Auth::user()->user_type == 1)
         <li><a href="{{ route('users.add') }}">Adicionar Utilizador</a></li>
+        @endif
+        @endauth
         <li><a href="{{route('tasks.all')}}">Todas as Tarefas</a></li>
     </ul>
 @endsection

@@ -7,7 +7,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [IndexController::class, 'welcome'])->name('welcome');
 Route::get('/home', [IndexController::class, 'home'])->name('homepage');
-Route::get('/users', [UserController::class, 'returnViewAllUsers'])->name('users.all');
+Route::get('/users', [UserController::class, 'returnViewAllUsers'])->name('users.all')->middleware('auth');
 //rota get porque faz um read (neste caso da view de form)
 Route::get('/add_user', [UserController::class, 'returnViewAddUser'])->name('users.add');
 //rota post porque lê os dados do form e envia para o servidor
