@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\TaskController;
@@ -31,6 +32,10 @@ Route::get('/show_task/{id}', [TaskController::class, 'returnViewShowTask'])->na
 Route::get('/hello_world/{name}', function($name){
     return '<h1>Hello '.$name.'</h1>';
 });
+
+
+//rotas de dashboard
+Route::get('/dashboard', [DashboardController::class, 'returnDashView'])->name('dashboard')->middleware('auth');
 
 
 
