@@ -35,7 +35,7 @@ class TaskApiController extends Controller
             'user_id' => 'required',
         ]);
 
-        Task::create($request->all);
+        Task::create($request->all());
 
         return response()->json('task inserida!');
 
@@ -60,16 +60,21 @@ class TaskApiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Task $task)
     {
-        //
+
+        $task->update($request->all());
+
+        return response()->json('task actualizada com sucesso!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Task $task)
     {
-        //
+        $task->delete();
+
+        return response()->json('task apagada com sucesso!');
     }
 }
